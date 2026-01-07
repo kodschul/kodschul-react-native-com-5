@@ -16,6 +16,7 @@ import ListItemsApp from './src/basics/ListItemsApp';
 import ListFlatItemsApp from './src/basics/ListFlatItemsApp';
 import GalleryApp from './src/basics/GalleryApp';
 import TodoApp from './src/basics/todo-app/TodoApp';
+import FlexboxApp from './src/basics/styling/FlexboxApp';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
