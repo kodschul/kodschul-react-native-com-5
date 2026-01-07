@@ -3,29 +3,11 @@ import React, { useEffect, useState, useRef } from "react";
 const App = () => {
   const [now, setNow] = useState(new Date());
 
-  const [isTimerActive, setTimerActive] = useState(true);
-
   useEffect(() => {
-    let nowTimerId = null;
-
-    if (isTimerActive) {
-      nowTimerId = setInterval(() => {
-        setNow(new Date());
-      }, 1000);
-    }
-
-    return () => {
-      nowTimerId && clearInterval(nowTimerId);
-    };
-  }, [isTimerActive]);
-
-  const stopTimer = () => {
-    setTimerActive(false);
-  };
-
-  const toggleTimer = () => {
-    setTimerActive(!isTimerActive);
-  };
+    setInterval(() => {
+      setNow(new Date());
+    }, 1000);
+  }, []);
 
   return (
     <div
@@ -52,7 +34,6 @@ const App = () => {
           alignItems: "center",
           fontSize: 100,
         }}
-        onClick={toggleTimer}
       >
         {now.toLocaleTimeString()}
       </div>
