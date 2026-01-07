@@ -54,6 +54,7 @@ const CountDownApp = () => {
             keyboardType="numeric"
             onChangeText={value => setDuration(parseInt(value) || 0)}
             style={styles.input}
+            returnKeyType="next"
           />
 
           <Pressable style={styles.btn} onPress={startCountDown}>

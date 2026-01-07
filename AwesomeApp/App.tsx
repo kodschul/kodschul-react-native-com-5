@@ -15,6 +15,7 @@ import ReactionTimeApp from './src/basics/ReactionTimeApp';
 import ListItemsApp from './src/basics/ListItemsApp';
 import ListFlatItemsApp from './src/basics/ListFlatItemsApp';
 import GalleryApp from './src/basics/GalleryApp';
+import TodoApp from './src/basics/todo-app/TodoApp';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,7 +31,7 @@ function App() {
 function AppContent() {
   return (
     <View style={styles.container}>
-      <GalleryApp />
+      <TodoApp />
     </View>
   );
 }

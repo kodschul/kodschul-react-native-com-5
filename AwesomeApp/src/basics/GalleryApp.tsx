@@ -74,7 +74,7 @@ const ListFlatItemsApp = () => {
       >
         List Items App
       </Text>
-      {/* <ScrollView horizontal={true}>{items.map(renderItem)}</ScrollView> */}
+      {/* <ScrollView>{items.map(renderItem)}</ScrollView> */}
 
       <FlatList
         data={items}
@@ -84,7 +84,7 @@ const ListFlatItemsApp = () => {
         initialNumToRender={20}
       />
 
-      {/* <ScrollView>{items.map(renderItemScrollView)}</ScrollView> */}
+      {/* <ScrollView>{items.map(item => renderItem({ item }))}</ScrollView> */}
     </SafeAreaView>
   );
 };

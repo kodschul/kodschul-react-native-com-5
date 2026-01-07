@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Pressable,
+  StyleSheet,
+  Button,
+  Platform,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const CounterApp = () => {
@@ -20,7 +27,10 @@ const CounterApp = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: countValue % 2 == 0 ? 'darkblue' : 'brown',
+        backgroundColor:
+          countValue % 2 == 0
+            ? Platform.select({ ios: 'blue', android: 'green' })
+            : 'brown',
       }}
     >
       <View style={{ paddingTop: 20 }}>
@@ -28,6 +38,8 @@ const CounterApp = () => {
           CounterApp
         </Text>
       </View>
+
+      {/* <Button title="+" onPress={countUp} /> */}
 
       <Pressable style={styles.btn} onPress={countUp}>
         <Text style={styles.btnText}>+</Text>
