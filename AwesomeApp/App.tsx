@@ -17,6 +17,9 @@ import ListFlatItemsApp from './src/basics/ListFlatItemsApp';
 import GalleryApp from './src/basics/GalleryApp';
 import TodoApp from './src/basics/todo-app/TodoApp';
 import FlexboxApp from './src/basics/styling/FlexboxApp';
+import CharactersScreen from './src/screens/Characters';
+
+import MainApp from './src/App';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,23 +27,9 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <CharactersScreen />
     </SafeAreaProvider>
   );
 }
-
-function AppContent() {
-  return (
-    <View style={styles.container}>
-      <TodoApp />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
