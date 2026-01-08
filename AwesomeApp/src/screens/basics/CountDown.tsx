@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScreenProps, Screens } from '../../navigation';
 
-const CountDownApp = () => {
-  const [duration, setDuration] = useState(0);
+const CountDownScreen = ({ route }: ScreenProps<Screens.COUNTDOWN>) => {
+  const [duration, setDuration] = useState(route.params.initialValue);
   const [countDown, setCountDown] = useState(-1);
 
   const [isActive, setActive] = useState(false);
@@ -106,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CountDownApp;
+export default CountDownScreen;

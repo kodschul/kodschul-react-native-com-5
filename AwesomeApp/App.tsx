@@ -4,22 +4,14 @@
  *
  * @format
  */
-import { NewAppScreen } from '@react-native/new-app-screen';
 
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import CounterApp from './src/basics/CounterApp';
-import CountDownApp from './src/basics/CountDownApp';
-import ReactionTimeApp from './src/basics/ReactionTimeApp';
-import ListItemsApp from './src/basics/ListItemsApp';
-import ListFlatItemsApp from './src/basics/ListFlatItemsApp';
-import GalleryApp from './src/basics/GalleryApp';
-import TodoApp from './src/basics/todo-app/TodoApp';
-import FlexboxApp from './src/basics/styling/FlexboxApp';
-import CharactersScreen from './src/screens/Characters';
+import AppContent from './src/AppContent';
 
-import MainApp from './src/App';
+const queryClient = new QueryClient();
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,7 +19,10 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <CharactersScreen />
+
+      <QueryClientProvider client={queryClient}>
+        <AppContent />
+      </QueryClientProvider>
     </SafeAreaProvider>
   );
 }
