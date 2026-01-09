@@ -11,22 +11,53 @@ import HomeScreen from './screens/tabs/Home';
 import ProfileScreen from './screens/tabs/Profile';
 import DeliveryDetailScreen from './screens/DeliveryDetail';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabBarParamList>();
 
+const renderTabIcon = ({ focused, color, size, tabName }) => {
+  const iconeName = {
+    [Screens.HOME_TAB]: 'house',
+    [Screens.PROFILE_TAB]: 'user',
+  }[tabName];
+
+  const iconStyle =
+    focused || tabName === Screens.HOME_TAB ? 'solid' : 'regular';
+
+  return (
+    <FontAwesome6
+      name={iconeName}
+      iconStyle={iconStyle}
+      size={size}
+      color={color}
+    />
+  );
+};
+
+const createTabIcon = (tabName: keyof TabBarParamList) => (props: any) =>
+  renderTabIcon({ ...props, tabName: tabName });
+
 const AppTabs = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#d86f00',
+        tabBarInactiveTintColor: 'grey',
+        tabBarStyle: { paddingBottom: 5, marginTop: 10 },
+      }}
+    >
       <Tab.Screen
         name={Screens.HOME_TAB}
         component={HomeScreen}
-        options={{
-          tabBarIcon: () => <Icon name="home-outline" size={20} />,
-        }}
+        options={{ tabBarIcon: createTabIcon(Screens.HOME_TAB) }}
       />
-      <Tab.Screen name={Screens.PROFILE_TAB} component={ProfileScreen} />
+      <Tab.Screen
+        name={Screens.PROFILE_TAB}
+        component={ProfileScreen}
+        options={{ tabBarIcon: createTabIcon(Screens.PROFILE_TAB) }}
+      />
     </Tab.Navigator>
   );
 };
@@ -35,7 +66,7 @@ const AppContent = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={Screens.TABS}
+        initialRouteName={Screens.DELIVERY_DETAIL}
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name={Screens.SPLASH} component={SplashScreen} />
