@@ -73,7 +73,6 @@ const AppContent = () => {
         <Stack.Screen name={Screens.LOGIN} component={LoginScreen} />
         <Stack.Screen name={Screens.TABS} component={AppTabs} />
         <Stack.Screen
-          options={{ headerShown: true }}
           name={Screens.DELIVERY_DETAIL}
           component={DeliveryDetailScreen}
         />

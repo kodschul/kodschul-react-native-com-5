@@ -15,7 +15,7 @@ AsyncStorage -> Zustand + Redux + Redux Persist (1h)
 
 Login Logik
 // TODO:
-Maps -> Kartendarstellung: React Native Maps (40min)
+Maps -> Kartendarstellung: React Native Maps ✅(40min)
 // APP SIGNING / ICON Änderung (✅) (30min)
 // TODO:
 // WEB: -> React Native Web (30min)
