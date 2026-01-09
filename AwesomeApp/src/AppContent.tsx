@@ -26,7 +26,10 @@ const AppTabs = () => {
 const AppContent = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: true }}>
+      <Stack.Navigator
+        initialRouteName={Screens.LOGIN}
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name={Screens.SPLASH} component={SplashScreen} />
         <Stack.Screen name={Screens.LOGIN} component={LoginScreen} />
         <Stack.Screen name={Screens.TABS} component={AppTabs} />

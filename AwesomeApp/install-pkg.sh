@@ -4,3 +4,7 @@
 
 
  yarn add react-native-notifications  react-native-mmkv react-native-nitro-modules react-native-maps
+
+
+ yarn add nativewind 
+ yarn add --dev tailwindcss@^3.4.17 prettier-plugin-tailwindcss@^0.5.11

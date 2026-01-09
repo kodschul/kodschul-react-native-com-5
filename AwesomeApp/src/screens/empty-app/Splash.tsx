@@ -3,6 +3,13 @@ import React, { useEffect } from 'react';
 import { ScreenProps, Screens } from '../navigation';
 
 const SplashScreen = ({ navigation }: ScreenProps<Screens.SPLASH>) => {
+  // useEffect(() => {
+  //   (async () => {
+  //     await new Promise(r => setTimeout(r, 2000));
+  //     navigation.replace(Screens.LOGIN);
+  //   })();
+  // }, []);
+
   return (
     <View style={styles.container}>
       <Text>Awesome App</Text>
