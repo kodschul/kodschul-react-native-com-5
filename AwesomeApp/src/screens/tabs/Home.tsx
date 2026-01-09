@@ -2,10 +2,13 @@ import { View, Text, Image, Dimensions, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { TabProps, Screens } from '../../navigation';
 import { FontAwesome6 as Icon } from '@react-native-vector-icons/fontawesome6';
+import authService from '../../config/authService';
 
 const deviceWidth = Dimensions.get('window').width;
 
 const HomeScreen = ({ navigation }: TabProps<Screens.HOME_TAB>) => {
+  const signedInUserName = authService.getSignedInUser()?.username || '';
+
   return (
     <View className="flex-1 center">
       <View className=" w-full ">
@@ -16,6 +19,12 @@ const HomeScreen = ({ navigation }: TabProps<Screens.HOME_TAB>) => {
             uri: 'https://www.activtrades.eu/storage/posts/2024/07/1719910988-1719910951-02.07.2024-2.webp',
           }}
         />
+      </View>
+
+      <View>
+        <Text className="text-3xl font-bold mt-4 mx-4">
+          Welcome Back! {signedInUserName}
+        </Text>
       </View>
 
       <View className="flex-1 bg-gray-100 p-4">

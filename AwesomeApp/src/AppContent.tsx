@@ -6,7 +6,7 @@ import SplashScreen from './screens/Splash';
 
 import { Screens, RootStackParamList, TabBarParamList } from './navigation';
 
-import LoginScreen from './screens/Login';
+import LoginScreen from './screens/auth/Login';
 import HomeScreen from './screens/tabs/Home';
 import ProfileScreen from './screens/tabs/Profile';
 import DeliveryDetailScreen from './screens/DeliveryDetail';
@@ -66,7 +66,7 @@ const AppContent = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={Screens.DELIVERY_DETAIL}
+        initialRouteName={Screens.SPLASH}
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name={Screens.SPLASH} component={SplashScreen} />

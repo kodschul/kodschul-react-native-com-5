@@ -1,19 +1,18 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TextInput,
-  Pressable,
-  KeyboardAvoidingView,
-} from 'react-native';
-import React from 'react';
-import { ScreenProps, Screens } from '../navigation';
+import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-const LoginScreen = ({ navigation }: ScreenProps<Screens.LOGIN>) => {
+type LoginViewProps = {
+  onSignIn: (credentials: { email: string; password: string }) => void;
+  onSignUp: () => void;
+};
+
+const LoginView = ({ onSignIn, onSignUp }: LoginViewProps) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { bottom } = useSafeAreaInsets();
+
   return (
     <View className="flex-1">
       <Image
@@ -33,12 +32,16 @@ const LoginScreen = ({ navigation }: ScreenProps<Screens.LOGIN>) => {
 
           <Text className="text-xl font-bold mt-5 mb-2 ">Email</Text>
           <TextInput
+            value={email}
+            onChangeText={setEmail}
             className="border rounded-2xl border-gray-500 px-3 py-4 color-slate-700 font-medium text-lg  "
             placeholder="Enter your email address"
           />
 
           <Text className="text-xl font-bold mt-5 mb-2 ">Password</Text>
           <TextInput
+            value={password}
+            onChangeText={setPassword}
             className="border rounded-2xl border-gray-500 px-3 py-4 color-slate-700 font-medium text-lg  "
             placeholder="Enter your password"
             secureTextEntry
@@ -53,25 +56,24 @@ const LoginScreen = ({ navigation }: ScreenProps<Screens.LOGIN>) => {
             style={{ paddingBottom: bottom + 100 }}
           >
             <View className="mt-10 ">
-              <Pressable
+              <TouchableOpacity
                 className="bg-orange-700   rounded-2xl py-4 items-center"
-                style={pressed => ({
-                  opacity: pressed ? 0.6 : 1,
-                  backgroundColor: '#018a86',
+                style={{
                   paddingVertical: 15,
                   borderRadius: 12,
                   alignItems: 'center',
-                })}
+                }}
+                onPress={() => onSignIn({ email, password })}
               >
                 <Text className="text-white text-xl font-medium">Sign In</Text>
-              </Pressable>
+              </TouchableOpacity>
 
               <View>
                 <Text className="text-center mt-6 text-lg ">
                   Don't have an account?{' '}
                   <Text
                     className="text-orange-700 font-bold underline"
-                    onPress={() => navigation.navigate(Screens.SIGNUP)}
+                    onPress={onSignUp}
                   >
                     Sign Up
                   </Text>
@@ -85,4 +87,4 @@ const LoginScreen = ({ navigation }: ScreenProps<Screens.LOGIN>) => {
   );
 };
 
-export default LoginScreen;
+export default LoginView;
