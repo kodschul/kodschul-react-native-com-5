@@ -11,13 +11,21 @@ import HomeScreen from './screens/tabs/Home';
 import ProfileScreen from './screens/tabs/Profile';
 import DeliveryDetailScreen from './screens/DeliveryDetail';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabBarParamList>();
 
 const AppTabs = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name={Screens.HOME_TAB} component={HomeScreen} />
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Screen
+        name={Screens.HOME_TAB}
+        component={HomeScreen}
+        options={{
+          tabBarIcon: () => <Icon name="home-outline" size={20} />,
+        }}
+      />
       <Tab.Screen name={Screens.PROFILE_TAB} component={ProfileScreen} />
     </Tab.Navigator>
   );
@@ -27,7 +35,7 @@ const AppContent = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={Screens.LOGIN}
+        initialRouteName={Screens.TABS}
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name={Screens.SPLASH} component={SplashScreen} />

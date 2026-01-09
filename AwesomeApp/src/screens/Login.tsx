@@ -26,7 +26,7 @@ const LoginScreen = ({ navigation }: ScreenProps<Screens.LOGIN>) => {
       <KeyboardAwareScrollView
         className="flex-1 px-5 rounded-t-xl bg-white "
         style={{ flex: 1, marginTop: -20 }}
-        contentContainerStyle={{ flex: 1, backgroundColor: 'yellow' }}
+        contentContainerStyle={{ flex: 1 }}
       >
         <View className="flex-1 pt-12 ">
           <Text className="text-3xl mt-5 font-bold ">Sign In</Text>
